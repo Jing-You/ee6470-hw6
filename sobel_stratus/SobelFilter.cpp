@@ -31,7 +31,7 @@ const int mask[MASK_N][MASK_X][MASK_Y] = {{{-1, -2, -1}, {0, 0, 0}, {1, 2, 1}},
                                     {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}}};
 
 
-const double embossFilterMask[MASK_X][MASK_Y] =
+const sc_int<8> embossFilterMask[MASK_X][MASK_Y] =
     {
         -1, -1, 0,
         -1, 0, 1,
