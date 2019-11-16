@@ -98,7 +98,9 @@ void SobelFilter::do_filter() {
 #ifndef NATIVE_SYSTEMC
 		HLS_DEFINE_PROTOCOL("main_reset");
 		i_rgb.reset();
-		o_result.reset();
+		o_newR.reset();
+		o_newG.reset();
+		o_newB.reset();
 #endif
 		wait();
 	}

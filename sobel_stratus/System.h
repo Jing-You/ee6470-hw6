@@ -27,10 +27,14 @@ private:
 	sc_signal<bool> rst;
 #ifndef NATIVE_SYSTEMC
 	cynw_p2p< sc_dt::sc_uint<24> > rgb;
-	cynw_p2p< sc_dt::sc_uint<32> > result;
+	cynw_p2p< sc_dt::sc_uint<32> > newR;
+	cynw_p2p< sc_dt::sc_uint<32> > newG;
+	cynw_p2p< sc_dt::sc_uint<32> > newB;
 #else
 	sc_fifo< sc_dt::sc_uint<24> > rgb;
-	sc_fifo< sc_dt::sc_uint<32> > result;
+	sc_fifo< sc_dt::sc_uint<32> > newR;
+	sc_fifo< sc_dt::sc_uint<32> > newG;
+	sc_fifo< sc_dt::sc_uint<32> > newB;
 #endif
 
 	std::string _output_bmp;

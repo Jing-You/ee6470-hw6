@@ -16,7 +16,6 @@ public:
 	sc_in < bool >  i_rst;
 #ifndef NATIVE_SYSTEMC
 	cynw_p2p< sc_dt::sc_uint<24> >::in i_rgb;
-	// cynw_p2p< sc_dt::sc_uint<32> >::out o_result;
 	cynw_p2p< sc_dt::sc_uint<8> >::out o_newR;
 	cynw_p2p< sc_dt::sc_uint<8> >::out o_newG;
 	cynw_p2p< sc_dt::sc_uint<8> >::out o_newB;
