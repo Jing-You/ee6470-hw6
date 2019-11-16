@@ -28,9 +28,9 @@ public:
 	cynw_p2p< sc_dt::sc_uint<8> >::base_in i_newB;
 #else
 	sc_fifo_out< sc_dt::sc_uint<24> > o_rgb;
-	cynw_p2p< sc_dt::sc_uint<32> >::base_in i_newR;
-	cynw_p2p< sc_dt::sc_uint<32> >::base_in i_newG;
-	cynw_p2p< sc_dt::sc_uint<32> >::base_in i_newB;
+	sc_fifo_in< sc_dt::sc_uint<32> >::base_in i_newR;
+	sc_fifo_in< sc_dt::sc_uint<32> >::base_in i_newG;
+	sc_fifo_in< sc_dt::sc_uint<32> >::base_in i_newB;
 #endif
 
   SC_HAS_PROCESS(Testbench);
