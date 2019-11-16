@@ -4,7 +4,7 @@
 #endif
 
 #include "SobelFilter.h"
-
+using namespace std;
 SobelFilter::SobelFilter( sc_module_name n ): sc_module( n )
 {
 #ifndef NATIVE_SYSTEMC
@@ -94,6 +94,7 @@ const double embossFilterMask[MASK_X][MASK_Y] =
 
 void SobelFilter::do_filter() {
 	int newR, newG, newB;
+	int bias = 128;
 	{
 #ifndef NATIVE_SYSTEMC
 		HLS_DEFINE_PROTOCOL("main_reset");
