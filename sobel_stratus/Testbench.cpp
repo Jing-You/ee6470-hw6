@@ -196,14 +196,14 @@ void Testbench::fetch_result() {
   for (y = 0; y != height; ++y) {
     for (x = 0; x != width; ++x) {
 #ifndef NATIVE_SYSTEMC
-			newR = newR.get();
+			newR = i_newR.get();
+			newG = i_newG.get();
+			newB = i_newB.get();
 #else
 			newR = i_newR.read();
 			newG = i_newG.read();
 			newB = i_newB.read();
 #endif
-			int result = (int)(std::sqrt(total));
-
         *(target_bitmap + bytes_per_pixel * (width * y + x) + 2) = newR;
         *(target_bitmap + bytes_per_pixel * (width * y + x) + 1) = newG;
         *(target_bitmap + bytes_per_pixel * (width * y + x) + 0) = newB;
