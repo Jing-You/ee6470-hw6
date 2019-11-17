@@ -1,5 +1,5 @@
-#ifndef SOBEL_FILTER_H_
-#define SOBEL_FILTER_H_
+#ifndef EMBOSS_FILTER_H_
+#define EMBOSS_FILTER_H_
 #include <systemc>
 using namespace sc_core;
 
@@ -9,7 +9,7 @@ using namespace sc_core;
 
 #include "filter_def.h"
 
-class SobelFilter: public sc_module
+class EmbossFilter: public sc_module
 {
 public:
 	sc_in_clk i_clk;
@@ -26,9 +26,9 @@ public:
 	sc_fifo_out< sc_dt::sc_uint<32> > o_newB;
 #endif
 
-	SC_HAS_PROCESS( SobelFilter );
-	SobelFilter( sc_module_name n );
-	~SobelFilter();
+	SC_HAS_PROCESS( EmbossFilter );
+	EmbossFilter( sc_module_name n );
+	~EmbossFilter();
 private:
 	void do_filter();
   int val[MASK_N];

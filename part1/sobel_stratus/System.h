@@ -5,9 +5,9 @@ using namespace sc_core;
 
 #include "Testbench.h"
 #ifndef NATIVE_SYSTEMC
-#include "SobelFilter_wrap.h"
+#include "embossFilter_wrap.h"
 #else
-#include "SobelFilter.h"
+#include "embossFilter.h"
 #endif
 
 class System: public sc_module
@@ -19,9 +19,9 @@ public:
 private:
   Testbench tb;
 #ifndef NATIVE_SYSTEMC
-	SobelFilter_wrapper sobel_filter;
+	EmbossFilter_wrapper emboss_filter;
 #else
-	SobelFilter sobel_filter;
+	EmbossFilter emboss_filter;
 #endif
 	sc_clock clk;
 	sc_signal<bool> rst;
