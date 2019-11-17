@@ -6,11 +6,15 @@ System::System( sc_module_name n, string input_bmp, string output_bmp ): sc_modu
 	tb.o_rst(rst);
 	sobel_filter.i_clk(clk);
 	sobel_filter.i_rst(rst);
-	tb.o_rgb(rgb);
+	tb.i_R(r);
+	tb.i_G(g);
+	tb.i_B(b);
 	tb.i_newR(newR);
 	tb.i_newG(newG);
 	tb.i_newB(newB);
-	sobel_filter.i_rgb(rgb);
+	sobel_filter.i_r(r);
+	sobel_filter.i_g(g);
+	sobel_filter.i_b(b);
 	sobel_filter.o_newR(newR);
 	sobel_filter.o_newG(newG);
 	sobel_filter.o_newB(newB);
