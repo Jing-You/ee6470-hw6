@@ -34,16 +34,16 @@ LIB_DIRS = -L.
 LIB_DIRS += -L$(SYSTEMC_HOME)/$(SYSTEMC_LIB)
 
 ### Definitions ###
-executives=emboss
+executives=sobel
 output=out.bmp
 sources= main.cpp Testbench.cpp SobelFilter.cpp System.cpp
 objects= $(subst .cpp,.o,$(sources))
 dependencies= $(subst .cpp,.d,$(sources))
 	
 ### what to do? ###
-all: emboss
+all: sobel
 
-emboss: $(objects)
+sobel: $(objects)
 	$(CXX) $(LDFLAGS) $(LIB_DIRS) $(objects) -o $@ $(LINKER_ERROR) $(LDLIBS) 
 
 $(objects):%.o:%.cpp
@@ -52,8 +52,8 @@ $(objects):%.o:%.cpp
 -include $(sources:.cpp=.d)
 
 ### phony ###
-run: emboss
-	./emboss lena_std_short.bmp out.bmp
+run: sobel
+	./sobel lena_std_short.bmp out.bmp
 
 ${output}: run
 

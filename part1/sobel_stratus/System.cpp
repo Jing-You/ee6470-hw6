@@ -4,16 +4,16 @@ System::System( sc_module_name n, string input_bmp, string output_bmp ): sc_modu
 {
 	tb.i_clk(clk);
 	tb.o_rst(rst);
-	emboss_filter.i_clk(clk);
-	emboss_filter.i_rst(rst);
+	sobel_filter.i_clk(clk);
+	sobel_filter.i_rst(rst);
 	tb.o_rgb(rgb);
 	tb.i_newR(newR);
 	tb.i_newG(newG);
 	tb.i_newB(newB);
-	emboss_filter.i_rgb(rgb);
-	emboss_filter.o_newR(newR);
-	emboss_filter.o_newG(newG);
-	emboss_filter.o_newB(newB);
+	sobel_filter.i_rgb(rgb);
+	sobel_filter.o_newR(newR);
+	sobel_filter.o_newG(newG);
+	sobel_filter.o_newB(newB);
 	tb.read_bmp(input_bmp);
 }
 
