@@ -15,16 +15,16 @@ public:
 	sc_in_clk i_clk;
 	sc_in < bool >  i_rst;
 #ifndef NATIVE_SYSTEMC
-	cynw_p2p<sc_dt::sc_uint<8>>::in i_R;
-	cynw_p2p<sc_dt::sc_uint<8>>::in i_G;
-	cynw_p2p<sc_dt::sc_uint<8>>::in i_B;
-	cynw_p2p<sc_dt::sc_uint<8>>::out o_newR;
+	cynw_p2p<sc_dt::sc_uint<8> >::in i_R;
+	cynw_p2p<sc_dt::sc_uint<8> >::in i_G;
+	cynw_p2p<sc_dt::sc_uint<8> >::in i_B;
+	cynw_p2p<sc_dt::sc_uint<8> >::out o_newR;
 	cynw_p2p< sc_dt::sc_uint<8> >::out o_newG;
 	cynw_p2p< sc_dt::sc_uint<8> >::out o_newB;
 #else
-	sc_fifo_in<sc_dt::sc_uint<8>> i_R;
-	sc_fifo_in<sc_dt::sc_uint<8>> i_G;
-	sc_fifo_in<sc_dt::sc_uint<8>> i_B;
+	sc_fifo_in<sc_dt::sc_uint<8> > i_R;
+	sc_fifo_in<sc_dt::sc_uint<8> > i_G;
+	sc_fifo_in<sc_dt::sc_uint<8> > i_B;
 	sc_fifo_out<sc_dt::sc_uint<8>> o_newR;
 	sc_fifo_out< sc_dt::sc_uint<8> > o_newG;
 	sc_fifo_out< sc_dt::sc_uint<8> > o_newB;
