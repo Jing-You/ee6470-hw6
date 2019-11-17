@@ -39,59 +39,6 @@ const sc_int<8> embossFilterMask[MASK_X][MASK_Y] =
     };
 
 
-// void SobelFilter::do_filter() {
-// 	{
-// #ifndef NATIVE_SYSTEMC
-// 		HLS_DEFINE_PROTOCOL("main_reset");
-// 		i_rgb.reset();
-// 		o_result.reset();
-// #endif
-// 		wait();
-// 	}
-
-
-// 	while (true) {
-// 		for (unsigned int i = 0; i<MASK_N; ++i) {
-// 			HLS_CONSTRAIN_LATENCY(0, 1, "lat00");
-// 			val[i] = 0;
-// 		}
-// 		for (unsigned int v = 0; v<MASK_Y; ++v) {
-// 			for (unsigned int u = 0; u<MASK_X; ++u) {
-// 				sc_dt::sc_uint<24> rgb;
-// #ifndef NATIVE_SYSTEMC
-// 				{
-// 					HLS_DEFINE_PROTOCOL("input");
-// 					rgb = i_rgb.get();
-// 					wait();
-// 				}
-// #else
-// 				rgb = i_rgb.read();
-// #endif
-// 				unsigned char grey = (rgb.range(7,0) + rgb.range(15,8) + rgb.range(23, 16))/3;
-// 				for (unsigned int i = 0; i != MASK_N; ++i) {
-// 					HLS_CONSTRAIN_LATENCY(0, 1, "lat01");
-// 					val[i] += grey * mask[i][u][v];
-// 				}
-// 			}
-// 		}
-// 		int total = 0;
-// 		for (unsigned int i = 0; i != MASK_N; ++i) {
-// 			HLS_CONSTRAIN_LATENCY(0, 1, "lat01");
-// 			total += val[i] * val[i];
-// 		}
-// #ifndef NATIVE_SYSTEMC
-// 		{
-// 			HLS_DEFINE_PROTOCOL("output");
-// 			o_result.put(total);
-// 			wait();
-// 		}
-// #else
-// 		o_result.write(total);
-// #endif
-// 	}
-// }
-
-
 void SobelFilter::do_filter() {
 	int newR, newG, newB;
 	int bias = 128;
@@ -115,14 +62,20 @@ void SobelFilter::do_filter() {
 		for (unsigned int v = 0; v<MASK_Y; ++v) {
 			for (unsigned int u = 0; u<MASK_X; ++u) {
 				sc_dt::sc_uint<24> rgb;
+				int r, g, b;
 #ifndef NATIVE_SYSTEMC
 				{
 					HLS_DEFINE_PROTOCOL("input");
 					rgb = i_rgb.get();
+					r = i_R.get();
+					G = i_G.get();
+					B = i_B.get();
 					wait();
 				}
 #else
-				rgb = i_rgb.read();
+				r = i_R.read();
+				g = i_G.read();
+				b = i_B.read();
 #endif
 				{
 					HLS_CONSTRAIN_LATENCY(0, 1, "lat01");

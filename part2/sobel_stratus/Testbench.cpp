@@ -166,14 +166,14 @@ void Testbench::feed_rgb() {
 						G = 0;
 						B = 0;
 					}
-					sc_dt::sc_uint<24> rgb;
-					rgb.range(7, 0) = R;
-					rgb.range(15, 8) = G;
-					rgb.range(23, 16) = B;
 #ifndef NATIVE_SYSTEMC
-					o_rgb.put(rgb);
+          o_R.put(R);
+          o_G.put(G);
+          o_B.put(B);
 #else
-					o_rgb.write(rgb);
+          o_R.write(R);
+          o_G.write(G);
+          o_B.write(B);
 #endif
         }
       }
