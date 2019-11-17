@@ -7,9 +7,6 @@
 using namespace std;
 SobelFilter::SobelFilter( sc_module_name n ): sc_module( n )
 {
-#ifndef NATIVE_SYSTEMC
-	HLS_FLATTEN_ARRAY(val);
-#endif
 	SC_THREAD( do_filter );
 	sensitive << i_clk.pos();
 	dont_initialize();

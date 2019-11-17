@@ -35,6 +35,5 @@ public:
 	~SobelFilter();
 private:
 	void do_filter();
-//   int val[MASK_N];
 };
 #endif
