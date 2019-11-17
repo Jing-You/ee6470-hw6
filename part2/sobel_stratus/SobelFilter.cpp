@@ -68,8 +68,8 @@ void SobelFilter::do_filter() {
 					HLS_DEFINE_PROTOCOL("input");
 					rgb = i_rgb.get();
 					r = i_R.get();
-					G = i_G.get();
-					B = i_B.get();
+					g = i_G.get();
+					b = i_B.get();
 					wait();
 				}
 #else
