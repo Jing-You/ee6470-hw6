@@ -9,10 +9,13 @@ SobelFilter::SobelFilter( sc_module_name n ): sc_module( n )
 {
 	SC_THREAD( do_filter_r );
 	sensitive << i_clk.pos();
+	reset_signal_is(i_rst, false);
 	SC_THREAD( do_filter_g );
 	sensitive << i_clk.pos();
+	reset_signal_is(i_rst, false);
 	SC_THREAD( do_filter_b );
 	sensitive << i_clk.pos();
+	reset_signal_is(i_rst, false);
 	dont_initialize();
 	reset_signal_is(i_rst, false);
         
