@@ -34,6 +34,8 @@ public:
 	SobelFilter( sc_module_name n );
 	~SobelFilter();
 private:
-	void do_filter();
+	void do_filter_r();
+	void do_filter_g();
+	void do_filter_b();
 };
 #endif
