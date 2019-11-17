@@ -16,9 +16,11 @@ SobelFilter::SobelFilter( sc_module_name n ): sc_module( n )
 	reset_signal_is(i_rst, false);
         
 #ifndef NATIVE_SYSTEMC
-	i_rgb.clk_rst(i_clk, i_rst);
-  	o_newR.clk_rst(i_clk, i_rst);
-  	o_newG.clk_rst(i_clk, i_rst);
+	i_R.clk_rst(i_clk, i_rst);
+	i_G.clk_rst(i_clk, i_rst);
+	i_B.clk_rst(i_clk, i_rst);
+	o_newR.clk_rst(i_clk, i_rst);
+	o_newG.clk_rst(i_clk, i_rst);
   	o_newB.clk_rst(i_clk, i_rst);
 #endif
 }
@@ -41,11 +43,14 @@ const sc_int<8> embossFilterMask[MASK_X][MASK_Y] =
 
 void SobelFilter::do_filter() {
 	int newR, newG, newB;
+	int r, g, b;
 	int bias = 128;
 	{
 #ifndef NATIVE_SYSTEMC
 		HLS_DEFINE_PROTOCOL("main_reset");
-		i_rgb.reset();
+		i_R.reset();
+		i_G.reset();
+		i_B.reset();
 		o_newR.reset();
 		o_newG.reset();
 		o_newB.reset();
@@ -62,11 +67,10 @@ void SobelFilter::do_filter() {
 		for (unsigned int v = 0; v<MASK_Y; ++v) {
 			for (unsigned int u = 0; u<MASK_X; ++u) {
 				sc_dt::sc_uint<24> rgb;
-				int r, g, b;
 #ifndef NATIVE_SYSTEMC
 				{
 					HLS_DEFINE_PROTOCOL("input");
-					rgb = i_rgb.get();
+					// rgb = i_rgb.get();
 					r = i_R.get();
 					g = i_G.get();
 					b = i_B.get();
@@ -79,9 +83,9 @@ void SobelFilter::do_filter() {
 #endif
 				{
 					HLS_CONSTRAIN_LATENCY(0, 1, "lat01");
-					newR += rgb.range(7, 0) * embossFilterMask[u][v];
-					newG += rgb.range(15, 8) * embossFilterMask[u][v];
-					newB += rgb.range(23, 16) * embossFilterMask[u][v];
+					newR += r * embossFilterMask[u][v];
+					newG += g * embossFilterMask[u][v];
+					newB += b * embossFilterMask[u][v];
 				}
 			}
 		}
