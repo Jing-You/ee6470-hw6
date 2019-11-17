@@ -26,17 +26,17 @@ private:
 	sc_clock clk;
 	sc_signal<bool> rst;
 #ifndef NATIVE_SYSTEMC
-	cynw_p2p<sc_dt::sc_uint<8>> r;
-	cynw_p2p<sc_dt::sc_uint<8>> g;
-	cynw_p2p<sc_dt::sc_uint<8>> b;
-	cynw_p2p<sc_dt::sc_uint<8>> newR;
+	cynw_p2p<sc_dt::sc_uint<8> > r;
+	cynw_p2p<sc_dt::sc_uint<8> > g;
+	cynw_p2p<sc_dt::sc_uint<8> > b;
+	cynw_p2p<sc_dt::sc_uint<8> > newR;
 	cynw_p2p< sc_dt::sc_uint<8> > newG;
 	cynw_p2p< sc_dt::sc_uint<8> > newB;
 #else
-	sc_fifo<sc_dt::sc_uint<8>> r;
-	sc_fifo<sc_dt::sc_uint<8>> g;
-	sc_fifo<sc_dt::sc_uint<8>> b;
-	sc_fifo<sc_dt::sc_uint<8>> newR;
+	sc_fifo<sc_dt::sc_uint<8> > r;
+	sc_fifo<sc_dt::sc_uint<8> > g;
+	sc_fifo<sc_dt::sc_uint<8> > b;
+	sc_fifo<sc_dt::sc_uint<8> > newR;
 	sc_fifo< sc_dt::sc_uint<8> > newG;
 	sc_fifo< sc_dt::sc_uint<8> > newB;
 #endif
