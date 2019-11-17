@@ -135,7 +135,6 @@ void Testbench::feed_rgb() {
 	max_txn_time = SC_ZERO_TIME;
 	min_txn_time = SC_ZERO_TIME;
 	total_txn_time = SC_ZERO_TIME;
-
 #ifndef NATIVE_SYSTEMC
   o_R.reset();
   o_G.reset();
