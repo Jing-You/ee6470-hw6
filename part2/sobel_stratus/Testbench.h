@@ -31,9 +31,9 @@ public:
 	cynw_p2p< sc_dt::sc_uint<8> >::base_in i_newG;
 	cynw_p2p< sc_dt::sc_uint<8> >::base_in i_newB;
 #else
-  sc_fifo_out<sc_dt::sc_uint<8> >::base_out i_R;
-  sc_fifo_out<sc_dt::sc_uint<8> >::base_out i_G;
-  sc_fifo_out<sc_dt::sc_uint<8> >::base_out i_B;
+  sc_fifo_out<sc_dt::sc_uint<8> >::base_out o_R;
+  sc_fifo_out<sc_dt::sc_uint<8> >::base_out o_G;
+  sc_fifo_out<sc_dt::sc_uint<8> >::base_out o_B;
   sc_fifo_in<sc_dt::sc_uint<8> >::base_in i_newR;
   sc_fifo_in< sc_dt::sc_uint<8> >::base_in i_newG;
 	sc_fifo_in< sc_dt::sc_uint<8> >::base_in i_newB;
